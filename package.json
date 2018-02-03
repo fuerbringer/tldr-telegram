@@ -1,0 +1,26 @@
+{
+  "name": "tldr-telegram",
+  "version": "1.0.0",
+  "description": "Browse tldr pages in Telegram",
+  "main": "bot.js",
+  "scripts": {
+    "test": "mocha test",
+    "test:standard": "standard bot.js lib/*.js",
+    "test:all": "npm test && npm run test:standard"
+  },
+  "keywords": [
+    "telegram"
+  ],
+  "author": "Severin Fürbringer",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "@octokit/rest": "^14.0.8",
+    "telegraf": "^3.17.6"
+  },
+  "devDependencies": {
+    "eslint": "^4.17.0",
+    "mocha": "^5.0.0",
+    "should": "^13.2.1",
+    "standard": "^10.0.3"
+  }
+}

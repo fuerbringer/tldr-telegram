@@ -7,14 +7,22 @@ This repo contains the source for [@tldr_pages_bot](https://t.me/tldr_pages_bot)
 
 ## Installing / Getting started
 
-Follow these steps to run this bot:
+This bot can be run with Docker or simply with `npm start`. In both cases `.env` needs to be populated with the following environment variables:
 
-1. Clone this repository: `git clone git@github.com:fuerbringer/tldr-telegram.git` and enter it: `cd tldr-telegram`
-2. Create the `.env` file needed for various tokens: `touch .env`
-3. Add @BotFather to your telegram and create a bot. You will get a bot token. Add that token to the `.env` file in this format: `BOT_TOKEN=<YOURTOKENHERE>`. [More instructions here](https://core.telegram.org/bots#6-botfather).
-4. Generate a GitHub access token [here](https://github.com/settings/tokens). It is needed to avoid getting API rate limited early on. You can leave all the checkboxes empty/unchecked. Add the resulting hash to the `.env` file like this: `GITHUB_TOKEN=<YOURGHTOKEN>`
-5. Go ahead and add `NODE_ENV=production` to `.env` if you're intending to run this in prod.
-6. Execute `npm start`
+```
+NODE_ENV=production
+BOT_TOKEN=<TELEGRAMBOTFATHERTOKEN>
+GITHUB_TOKEN=<GITHUBTOKEN>
+REDIS_HOST=<REDISIP>
+REDIS_PORT=<REDISPORT>
+```
+
+Note that `REDIS_HOST` and `REDIS_PORT` are optional if you're using `docker-compose` to start the bot.
+
+### Useful links
+
+- [Telegram BotFather](https://core.telegram.org/bots#6-botfather)
+- [GitHub Token Settings](https://github.com/settings/tokens)
 
 <!--
 TODO: This stuff below, see https://github.com/wearehive/project-guidelines/blob/master/README.sample.md for a vague idea of what would be good to add

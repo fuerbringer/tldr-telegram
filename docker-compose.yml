@@ -1,0 +1,11 @@
+version: "3.3"
+services:
+  tldr-telegram:
+    image: fuerbringer/tldr-telegram
+    links:
+      - tldr-redis
+    environment:
+      - REDIS_HOST=tldr-redis
+    env_file: .env
+  tldr-redis:
+    image: redis:4-alpine

@@ -1,3 +1,5 @@
+'use strict'
+
 require('dotenv').config()
 
 const Telegraf = require('telegraf')
@@ -9,8 +11,7 @@ bot.hears(/\/tldr (.+)/, ctx => {
   const [platform, page] = parameter.split('/')
   tldr.fetchPage(page, platform, (error, contents) => {
     if (contents) {
-      const pageContents = Buffer.from(contents.data.content, contents.data.encoding)
-      return ctx.replyWithMarkdown(pageContents.toString())
+      return ctx.replyWithMarkdown(contents)
     } else {
       return ctx.reply("Sorry that page couldn't be found")
       console.log(error)

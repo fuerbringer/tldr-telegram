@@ -17,6 +17,7 @@
   "dependencies": {
     "@octokit/rest": "^14.0.8",
     "dotenv": "^5.0.0",
+    "redis": "^2.8.0",
     "telegraf": "^3.17.6"
   },
   "devDependencies": {

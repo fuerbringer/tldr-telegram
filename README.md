@@ -7,7 +7,7 @@ This repo contains the source for [@tldr_pages_bot](https://t.me/tldr_pages_bot)
 
 ## Installing / Getting started
 
-This bot can be run with Docker or simply with `npm start`. In both cases `.env` needs to be populated with the following environment variables:
+This bot can be run with Docker or simply `npm start`. In both cases `.env` needs to be populated with the following environment variables:
 
 ```
 NODE_ENV=production

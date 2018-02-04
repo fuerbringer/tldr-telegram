@@ -4,6 +4,7 @@
   "description": "Browse tldr pages in Telegram",
   "main": "bot.js",
   "scripts": {
+    "start": "node bot.js",
     "test": "mocha test",
     "test:standard": "standard bot.js lib/*.js",
     "test:all": "npm test && npm run test:standard"
@@ -15,6 +16,7 @@
   "license": "AGPL-3.0",
   "dependencies": {
     "@octokit/rest": "^14.0.8",
+    "dotenv": "^5.0.0",
     "telegraf": "^3.17.6"
   },
   "devDependencies": {

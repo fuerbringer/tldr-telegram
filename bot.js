@@ -1,7 +1,8 @@
+require('dotenv').config()
+
 const Telegraf = require('telegraf')
 const tldr = require('./lib/tldr')
 const bot = new Telegraf(process.env.BOT_TOKEN)
-
 
 bot.hears(/\/tldr (.+)/, ctx => {
   const [command, parameter] = ctx.message.text.toLowerCase().split(' ')

@@ -12,6 +12,7 @@ This bot can be run with Docker or simply `npm start`. In both cases `.env` need
 ```
 NODE_ENV=production
 BOT_TOKEN=<TELEGRAMBOTFATHERTOKEN>
+BOT_USERNAME=<TELEGRAMBOTUSERNAME>
 GITHUB_TOKEN=<GITHUBTOKEN>
 REDIS_HOST=<REDISIP>
 REDIS_PORT=<REDISPORT>

@@ -4,12 +4,11 @@ require('dotenv').config()
 
 const Telegraf = require('telegraf')
 const tldr = require('./lib/tldr')
-const bot = new Telegraf(process.env.BOT_TOKEN)
+const bot = new Telegraf(process.env.BOT_TOKEN, {username: process.env.BOT_USERNAME})
 
 bot.telegram.getMe().then((botInfo) => {
-  bot.options.username = botInfo.username
 
-  const deliverPage = ctx => {
+  bot.command('tldr', ctx => {
     const [command, parameter] = ctx.message.text.toLowerCase().split(' ')
     const [platform, page] = parameter.split('/')
     tldr.fetchPage(page, platform, (error, contents) => {
@@ -20,9 +19,12 @@ bot.telegram.getMe().then((botInfo) => {
         console.log(error)
       }
     })
-  }
+  })
 
-  bot.hears(/\/tldr (.+)/i, ctx => deliverPage(ctx))
-  bot.hears(new RegExp(`/tldr@${bot.options.username} (.+)`), ctx => deliverPage(ctx))
+  bot.command('start', ctx => {
+    const greeting = 'Hi, I\'m *@' + process.env.BOT_USERNAME + '*.\n' + 'You can look up commands with:\n`/tldr <platform>/<command>`\n\n*Examples:*\n`/tldr common/tldr`\n`/tldr linux/pacaur`'
+    return ctx.replyWithMarkdown(greeting)
+  })
+
   bot.startPolling()
 })

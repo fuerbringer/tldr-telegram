@@ -18,7 +18,8 @@
     "@octokit/rest": "^14.0.8",
     "dotenv": "^5.0.0",
     "redis": "^2.8.0",
-    "telegraf": "^3.17.6"
+    "telegraf": "^3.17.6",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "eslint": "^4.17.0",

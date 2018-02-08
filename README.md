@@ -5,6 +5,10 @@
 
 This repo contains the source for [@tldr_pages_bot](https://t.me/tldr_pages_bot) on [Telegram](https://telegram.org/).
 
+## Screenshot
+
+![tldr pages bot](https://raw.githubusercontent.com/PROGRADE-Tech/Tarchivebot/master/screenshot.png)
+
 ## Installing / Getting started
 
 This bot can be run with Docker or simply `npm start`. In both cases `.env` needs to be populated with the following environment variables:

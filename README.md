@@ -7,7 +7,7 @@ This repo contains the source for [@tldr_pages_bot](https://t.me/tldr_pages_bot)
 
 ## Screenshot
 
-![tldr pages bot](https://raw.githubusercontent.com/PROGRADE-Tech/Tarchivebot/master/screenshot.png)
+![tldr pages bot](https://raw.githubusercontent.com/fuerbringer/tldr-telegram/master/screenshot.png)
 
 ## Installing / Getting started
 

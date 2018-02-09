@@ -20,6 +20,7 @@ BOT_USERNAME=<TELEGRAMBOTUSERNAME>
 GITHUB_TOKEN=<GITHUBTOKEN>
 REDIS_HOST=<REDISIP>
 REDIS_PORT=<REDISPORT>
+LOG_FILE=<LOGFILENAME>
 ```
 
 Note that `REDIS_HOST` and `REDIS_PORT` are optional if you're using `docker-compose` to start the bot.

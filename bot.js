@@ -5,6 +5,7 @@ require('dotenv').config()
 const _ = require('underscore')
 const Telegraf = require('telegraf')
 const tldr = require('./lib/tldr')
+const logger = require('./lib/logger')
 const bot = new Telegraf(process.env.BOT_TOKEN, {
   username: process.env.BOT_USERNAME
 })
@@ -19,7 +20,11 @@ const commands = {
         if (contents) {
           return ctx.replyWithMarkdown(contents)
         }
-        console.log(error)
+        if(error) {
+          logger.log('error', error)
+        } else {
+          logger.info('Could not deliver a requested page')
+        }
         return ctx.reply('Sorry that page couldn\'t be found')
       })
     })
@@ -38,7 +43,10 @@ const commands = {
 
 // Accept bot commands once Telegraf is ready
 bot.telegram.getMe().then(botInfo => {
+  logger.info(`tldr-telegram started listening on @${botInfo.username}`)
   bot.command('tldr', ctx => commands.tldr(ctx))
   bot.command('start', ctx => commands.start(ctx))
   bot.startPolling()
 })
+
+bot.catch(error => logger.log('error', error))

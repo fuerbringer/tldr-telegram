@@ -12,7 +12,7 @@ const bot = new Telegraf(process.env.BOT_TOKEN, {
 const commands = {
   tldr: ctx => {
     // Pattern match for one or more commands and filter to avoid duplicates
-    const commands = _.uniq(ctx.message.text.match(/[\w\+-]+\/[\w\+-]+/g))
+    const commands = _.uniq(ctx.message.text.match(/[\w+-]+\/[\w+-]+/g))
     commands.map(parameter => {
       const [platform, page] = parameter.split('/')
       tldr.fetchPage(page, platform, (error, contents) => {
@@ -20,18 +20,18 @@ const commands = {
           return ctx.replyWithMarkdown(contents)
         }
         console.log(error)
-        return ctx.reply("Sorry that page couldn't be found")
+        return ctx.reply('Sorry that page couldn\'t be found')
       })
     })
   },
   start: ctx => {
-    const greeting = `Hi, I'm *@${process.env.BOT_USERNAME}*.\n`
-      + 'You can look up commands with:\n'
-      + '`/tldr <platform>/<command>`\n\n'
-      + '*Examples:*\n'
-      + '`/tldr common/tldr`\n'
-      + '`/tldr linux/pacaur`\n'
-      + '`/tldr common/sftp linux/arp-scan`\n'
+    const greeting = `Hi, I'm *@${process.env.BOT_USERNAME}*.\n` +
+      'You can look up commands with:\n' +
+      '`/tldr <platform>/<command>`\n\n' +
+      '*Examples:*\n' +
+      '`/tldr common/tldr`\n' +
+      '`/tldr linux/pacaur`\n' +
+      '`/tldr common/sftp linux/arp-scan`\n'
     return ctx.replyWithMarkdown(greeting)
   }
 }

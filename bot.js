@@ -11,33 +11,37 @@ const bot = new Telegraf(process.env.BOT_TOKEN, {
 })
 
 const commands = {
-  tldr: ctx => {
+  tldr: function(ctx) {
     // Pattern match for one or more commands and filter to avoid duplicates
     const commands = _.uniq(ctx.message.text.match(/[\w+-]+\/[\w+-]+/g))
-    commands.map(parameter => {
-      const [platform, page] = parameter.split('/')
-      tldr.fetchPage(page, platform, (error, contents) => {
-        if (contents) {
-          return ctx.replyWithMarkdown(contents)
-        }
-        if(error) {
-          logger.log('error', error)
-        } else {
+    if (commands && commands.length) {
+      commands.map(parameter => {
+        const [platform, page] = parameter.split('/')
+        tldr.fetchPage(page, platform, (error, contents) => {
+          if (contents) {
+            return ctx.replyWithMarkdown(contents)
+          }
+          if (error) {
+            logger.log('error', error)
+          }
           logger.info('Could not deliver a requested page')
-        }
-        return ctx.reply('Sorry that page couldn\'t be found')
+          return ctx.replyWithMarkdown(`Sorry, \`${page}\` couldn't be found in \`${platform}\``)
+        })
       })
-    })
+    } else {
+      return this.start(ctx, false) // Show instructions instead of just nothing
+    }
   },
-  start: ctx => {
-    const greeting = `Hi, I'm *@${process.env.BOT_USERNAME}*.\n` +
+  start: function(ctx, greet = true) {
+    const startMessage =
+      (greet ? `Hi, I'm *@${process.env.BOT_USERNAME}*.\n` : '') +
       'You can look up commands with:\n' +
       '`/tldr <platform>/<command>`\n\n' +
       '*Examples:*\n' +
       '`/tldr common/tldr`\n' +
       '`/tldr linux/pacaur`\n' +
       '`/tldr common/sftp linux/arp-scan`\n'
-    return ctx.replyWithMarkdown(greeting)
+    return ctx.replyWithMarkdown(startMessage)
   }
 }
 
